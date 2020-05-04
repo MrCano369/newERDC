@@ -1,0 +1,41 @@
+*{
+    margin: 0em;
+    padding: 0em;
+    box-sizing: border-box;
+}
+body{
+    background-image: url('fondo.jpg');
+    background-size: cover;
+}
+form{
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}
+input{
+    margin: 5px 0px;
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    background-color: transparent;
+    outline: none;
+    border-width: 1px;
+}
+input[type='submit'], button{
+    padding: 0px 20px;
+    font-size: 20px;
+    background-color: #BA4A00;
+    border: 5px outset #DC7633;
+    height: 50px;
+    color: white;
+}
+input[type='submit']:hover, button:hover{
+    cursor: pointer;
+    border-style: inset;
+}
+.page{
+    margin: auto;
+    max-width: 700px;
+    min-height: 100vh;
+    padding-top: 100px;
+}
