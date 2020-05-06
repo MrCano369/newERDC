@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #mail{
+            font-weight: bold;
+        }
+        button{
+            width: 200px;
+            margin: 10px;
+        }
+    </style>
+    <title>Esperando Confirmación</title>
+</head>
+<body>
+    <div class="page">
+        <p>Hemos enviado un correo de confirmación a <span id="mail"></span></p>
+        <p>Si no recibiste nada haz click en el botón.</p>
+        <p>Si ya activaste tu cuenta puedes cerrar esta pestaña.</p>
+        <button id="btn">Reenviar</button>
+    </div>
+</body>
+</html>
+<script src="functions.js"></script>
+<script>
+    mail.innerText = JSON.parse(localStorage.getItem('user')).mail;
+    btn.addEventListener('click', () => enviarCorreo());
+</script>

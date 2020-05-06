@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Registro</title>
+</head>
+<body>
+    <div class="page">
+        <form id="frm">
+            <h1>Regístrate</h1>
+            <input type="text" name="user" placeholder="Nombre de usuario" required>
+            <input type="email" name="mail" placeholder="Correo electrónico" required>
+            <input type="password" name="pass" placeholder="Contraseña" required>
+            <input type="password" name="repass" placeholder="Repite tu contraseña" required>
+            <input type="submit" value="Acceder">
+            <label>Si ya tienes cuenta <a href="../iniciar">Inicia sesión</a></label>
+        </form>
+    </div>
+</body>
+</html>
+<script src="functions.js"></script>
+<script>
+    frm.repass.addEventListener('input', () => {
+        if (frm.pass.value != frm.repass.value)
+            frm.repass.setCustomValidity("Las contraseñas no coinciden");
+        else
+            frm.repass.setCustomValidity("");
+    });
+
+    frm.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch('registro.php', {method: 'POST', body: new FormData(frm)})
+        .then(e => e.text())
+        .then(d => {
+            if(d){
+                localStorage.setItem('user', JSON.stringify({user: frm.user.value, mail: frm.mail.value}));
+                enviarCorreo();
+                location.href = 'esperaConfirm.html';
+            }else
+                alert("El nombre o correo ya estan registrados");
+        });
+    });
+</script>
