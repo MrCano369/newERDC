@@ -25,10 +25,12 @@
         fetch('iniciarSesion.php', {method: 'POST', body: new FormData(frm)})
         .then(e => e.text())
         .then(d => {
-            if(isNaN(d)) alert(d);
-            else{
-                localStorage.setItem("user", JSON.stringify({user: d.user, mail, xp: d.xp, coins: d.coins, active: d.active}));
+            try{
+                let u = JSON.parse(d);
+                localStorage.setItem("user", JSON.stringify({user: u.user, mail, xp: u.xp, coins: u.coins, active: u.active}));
                 location.href = "index.html";
+            }catch(e){
+                alert(d);
             }
         });
     });

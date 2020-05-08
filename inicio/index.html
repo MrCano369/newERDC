@@ -31,6 +31,7 @@
             width: 200px;
             border: 1px solid gray;
             text-align: center;
+            display: none;
         }
         #foto{margin: 10px;}
     </style>
@@ -57,12 +58,12 @@
         </div>
         <hr>
         <div class="actividades">
-            <button>Chat</button>
+            <button disabled>Chat</button>
             <button disabled>Curso de Japonés</button>
             <button disabled>Minijuegos</button>
             <button disabled>Tienda</button>
             <button disabled>Logros</button>
-            <button disabled>Donaciones xd</button>
+            <button>Ruleta de la Fortuna</button>
         </div>
         <hr>
         <div class="noticias">
@@ -76,22 +77,18 @@
 <script>
     var user = JSON.parse(localStorage.getItem('user'));
     
-    window.addEventListener('load', () => {
-
-        if(user) siUser();
-        else noUser();
+    if(user) siUser();
+    else noUser();
         
-    });
-
     function siUser() {
         nameUs.innerText = user.user;
         xp.innerText = user.xp;
         coins.innerText = user.coins;
         log.style.display = "none";
+        usuario.style.display = "block";
     }
 
     function noUser() {
-        usuario.style.display = "none";
     }
 
     btnSalir.addEventListener("click", () => location.href = "salir.php");
