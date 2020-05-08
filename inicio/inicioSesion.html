@@ -12,8 +12,8 @@
             <h1>Iniciar Sesión</h1>
             <input type="email" name="mail" placeholder="Correo electrónico" required>
             <input type="password" name="pass" placeholder="Contraseña" required>
-            <input type="submit" value="Acceder">
-            <label>Si no tienes cuenta puedes <a href="../registro">Registrarte</a>.</label>
+            <button>Acceder</button>
+            <label>Si no tienes cuenta puedes <a href="registro.html">Registrarte</a>.</label>
         </form>
     </div>
 </body>
@@ -21,20 +21,15 @@
 <script>
     frm.addEventListener('submit', e => {
         e.preventDefault();
+        let mail = frm.mail.value;
         fetch('iniciarSesion.php', {method: 'POST', body: new FormData(frm)})
         .then(e => e.text())
         .then(d => {
             if(isNaN(d)) alert(d);
-            else location.href = "index.html";
+            else{
+                localStorage.setItem("user", JSON.stringify({user: d.user, mail, xp: d.xp, coins: d.coins, active: d.active}));
+                location.href = "index.html";
+            }
         });
     });
-
-
-
-    /*
-    for(key in d){if(!isNaN(key)){delete d[key]}}
-
-    if ($obj = mysqli_fetch_array($r))
-    echo json_encode($obj);
-    */
 </script>

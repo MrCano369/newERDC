@@ -6,6 +6,8 @@
 body{
     background-image: url('fondo.jpg');
     background-size: cover;
+    display: flex;
+    justify-content: center;
 }
 form{
     width: 250px;
@@ -21,22 +23,26 @@ input{
     outline: none;
     border-width: 1px;
 }
-input[type='submit'], button{
-    padding: 0px 20px;
+button{
+    margin: 5px 10px;
     font-size: 20px;
     background-color: #BA4A00;
     border: 5px outset #DC7633;
     height: 50px;
+    width: 150px;
     color: white;
     outline: none;
 }
-input[type='submit']:hover, button:hover{
+button:hover{
     cursor: pointer;
     border-style: inset;
 }
+button:disabled{
+    opacity: 0.5;
+    cursor: auto;
+    border-style: inset;
+}
 .page{
-    margin: auto;
-    max-width: 700px;
+    width: 700px;
     min-height: 100vh;
-    padding-top: 100px;
 }

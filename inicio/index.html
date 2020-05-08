@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        span{
+            font-weight: bold;
+        }
+        .page{
+            border: 1px solid gray;
+            position: relative;
+        }
+        .menu{
+            text-align: center;
+        }
+        .actividades{
+            padding: 10px 0px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .actividades button{
+            width: 100%;
+        }
+        .noticias{
+            padding: 10px;
+        }
+        #usuario{
+            width: 200px;
+            border: 1px solid gray;
+            text-align: center;
+        }
+        #foto{margin: 10px;}
+    </style>
+    <title>Home</title>
+</head>
+<body>
+    <div id="usuario">
+        <img id="foto" src="foto.jpg" width="150px" height="150px">
+        <h3 id="nameUs">Usuario</h3>
+        <div>
+            <label>XP: <span id="xp">0</span></label>
+            <label>Coins: <span id="coins">0</span></label>
+        </div>
+        <button disabled>Perfil</button>
+        <button id="btnSalir">Salir</button>
+    </div>
+    <div class="page">
+        <div class="menu">
+            <h1>El Rincón de Cano</h1>
+            <div id="log">
+                <a href="inicioSesion.html"><button>Iniciar Sesión</button></a>
+                <a href="registro.html"><button>Registrarme</button></a>
+            </div>
+        </div>
+        <hr>
+        <div class="actividades">
+            <button>Chat</button>
+            <button disabled>Curso de Japonés</button>
+            <button disabled>Minijuegos</button>
+            <button disabled>Tienda</button>
+            <button disabled>Logros</button>
+            <button disabled>Donaciones xd</button>
+        </div>
+        <hr>
+        <div class="noticias">
+            <h1>Noticias</h1>
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias voluptates pariatur saepe, laudantium voluptatum rerum doloribus totam obcaecati, autem voluptatibus, id praesentium incidunt sunt ducimus consequatur perferendis. Deleniti, distinctio facilis.</h3>
+            <img src="https://picsum.photos/600/300" width="100%">
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var user = JSON.parse(localStorage.getItem('user'));
+    
+    window.addEventListener('load', () => {
+
+        if(user) siUser();
+        else noUser();
+        
+    });
+
+    function siUser() {
+        nameUs.innerText = user.user;
+        xp.innerText = user.xp;
+        coins.innerText = user.coins;
+        log.style.display = "none";
+    }
+
+    function noUser() {
+        usuario.style.display = "none";
+    }
+
+    btnSalir.addEventListener("click", () => location.href = "salir.php");
+</script>

@@ -14,32 +14,30 @@
             <input type="email" name="mail" placeholder="Correo electrónico" required>
             <input type="password" name="pass" placeholder="Contraseña" required>
             <input type="password" name="repass" placeholder="Repite tu contraseña" required>
-            <input type="submit" value="Acceder">
-            <label>Si ya tienes cuenta <a href="../iniciar">Inicia sesión</a></label>
+            <button>Registrarme</button>
+            <label>Si ya tienes cuenta <a href="inicioSesion.html">Inicia sesión</a>.</label>
         </form>
     </div>
 </body>
 </html>
-<script src="functions.js"></script>
 <script>
     frm.repass.addEventListener('input', () => {
-        if (frm.pass.value != frm.repass.value)
-            frm.repass.setCustomValidity("Las contraseñas no coinciden");
-        else
-            frm.repass.setCustomValidity("");
+        if (frm.pass.value != frm.repass.value) frm.repass.setCustomValidity("Las contraseñas no coinciden");
+        else frm.repass.setCustomValidity("");
     });
 
     frm.addEventListener('submit', e => {
         e.preventDefault();
-        fetch('registro.php', {method: 'POST', body: new FormData(frm)})
+        let user = frm.user.value;
+        let mail = frm.mail.value;
+        fetch('registrar.php', {method: 'POST', body: new FormData(frm)})
         .then(e => e.text())
         .then(d => {
-            if(d){
-                localStorage.setItem('user', JSON.stringify({user: frm.user.value, mail: frm.mail.value}));
-                enviarCorreo();
-                location.href = 'esperaConfirm.html';
-            }else
-                alert("El nombre o correo ya estan registrados");
+            if(isNaN(d)) alert(d);
+            else{
+                localStorage.setItem('user', JSON.stringify({user, mail, xp: 0, coins: 100, active: 0}));
+                location.href = 'enviarActivacion.php';
+            }
         });
     });
 </script>
