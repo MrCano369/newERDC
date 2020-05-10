@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .cont{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 600px;
+            height: 600px;
+        }
+        body{
+            flex-direction: column;
+            align-items: center;
+        }
+        #ruleta{border-radius: 100%;}
+        span{font-size: 40px;}
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div><img src="ruleta.png" id="ruleta" height="100%" width="100%"></div>
+        <span><</span>
+    </div>
+    <button id="girar">Girar</button>
+</body>
+</html>
+<script>
+    girar.addEventListener('click', () => {
+        girar.disabled = true;
+        var r = Math.trunc(Math.random()*3000+500);
+        ruleta.style.transform = "rotate("+r+"deg)";
+        ruleta.style.transition = "5s";
+        setTimeout(() => {
+            let x = r % 360;
+
+            if (x <= 30) console.log("Ganas 100");
+            else if (x > 30 && x <= 60) console.log("Cerrar sesion");
+            else if (x > 60 && x <= 90) console.log("Ganas 25");
+            else if (x > 90 && x <= 120) console.log("Pierdes 5");
+            else if (x > 120 && x <= 150) console.log("Vuelve a tirar");
+            else if (x > 150 && x <= 180) console.log("Redirreccion");
+            else if (x > 180 && x <= 210) console.log("+3tiros");
+            else if (x > 210 && x <= 240) console.log("Pierdes 15");
+            else if (x > 240 && x <= 270) console.log("X2");
+            else if (x > 270 && x <= 300) console.log("Correo");
+            else if (x > 300 && x <= 330) console.log("Gana 10 xp");
+            else if (x > 330 && x <= 360) console.log("Nanimo");
+            girar.disabled = false;
+        }, 5000);
+    });
+    
+</script>

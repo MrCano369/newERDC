@@ -9,6 +9,9 @@ body{
     display: flex;
     justify-content: center;
 }
+span{
+    font-weight: bold;
+}
 form{
     width: 250px;
     text-align: center;
@@ -24,11 +27,11 @@ input{
     border-width: 1px;
 }
 button{
-    margin: 5px 10px;
+    margin: 5px 0px;
     font-size: 20px;
+    height: 50px;
     background-color: #BA4A00;
     border: 5px outset #DC7633;
-    height: 50px;
     width: 150px;
     color: white;
     outline: none;

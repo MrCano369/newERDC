@@ -5,35 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <style>
-        span{
-            font-weight: bold;
-        }
-        .page{
-            border: 1px solid gray;
-            position: relative;
-        }
-        .menu{
-            text-align: center;
-        }
+        button{margin: 5px;}
+        .page{border: 1px solid gray;}
+        .menu{text-align: center;}
         .actividades{
             padding: 10px 0px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            text-align: center;
         }
-        .actividades button{
-            width: 100%;
-        }
-        .noticias{
-            padding: 10px;
-        }
+        .actividades button{width: 95%;}
         #usuario{
             width: 200px;
             border: 1px solid gray;
             text-align: center;
             display: none;
         }
-        #foto{margin: 10px;}
+        .noticias{padding: 10px;}
+        #foto{margin-top: 10px;}
     </style>
     <title>Home</title>
 </head>
@@ -63,7 +50,7 @@
             <button disabled>Minijuegos</button>
             <button disabled>Tienda</button>
             <button disabled>Logros</button>
-            <button>Ruleta de la Fortuna</button>
+            <a href="ruleta/"><button>Ruleta de la Fortuna</button></a>
         </div>
         <hr>
         <div class="noticias">
